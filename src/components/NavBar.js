@@ -16,7 +16,7 @@ const NavBar = () => {
   const {expanded , setExpanded,ref} = useClickOutsideToggle();
   const handleSignOut = async ()=> {
     try {
-      await axios.post("dj-rest-auth/logout/",{withCredentials: true,});
+      await axios.post("dj-rest-auth/logout/",{withCredentials: false,});
       setCurrentUser(null)
 
     }

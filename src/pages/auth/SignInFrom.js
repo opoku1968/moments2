@@ -33,7 +33,7 @@ function SignInForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const {data} = await axios.post("/dj-rest-auth/login/", signInData,{withCredentials: true,});
+      const {data} = await axios.post("/dj-rest-auth/login/", signInData,{withCredentials: false,});
     
       const authToken =data.access_token;
 
