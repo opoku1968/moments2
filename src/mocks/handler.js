@@ -1,4 +1,5 @@
-const baseURL =  "https://drf-api-rec.herokuapp.com"
+// const baseURL =  "https://drf-api-rec.herokuapp.com"
+const baseURL = "https://moments-cl-848e07291436.herokuapp.com"
 
 export const handlers = [
     rest.get(`${baseURL}dj-rest-auth/user/`,(req,res,ctx)=>{
