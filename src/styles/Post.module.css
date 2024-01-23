@@ -1,0 +1,55 @@
+.Post {
+    background-color: #ffffff;
+    border: 1px solid #dadadf;
+    border-radius: 2px;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  
+  .Post figure,
+  h5 {
+    margin: 0 0;
+  }
+  
+  .Heart {
+    color: #f85032;
+  }
+  
+  .Heart:hover {
+    color: #2142b2;
+  }
+  
+  .HeartOutline:hover {
+    color: #f85032;
+  }
+
+  .cols {
+    color: #f85032;
+  }
+
+  .roww {
+
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .containerow {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .containerow2 {
+    background-color:black;
+    width: 90%;
+    justify-content: flex-start;
+    
+  }
+
+  .flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
