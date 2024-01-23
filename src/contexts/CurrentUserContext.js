@@ -32,7 +32,7 @@ export const CurrentUserProvider = ({ children }) => {
 
     
     try {
-      await axios.post('/dj-rest-auth/token/refresh/');
+      await axios.post('/dj-rest-auth/token/refresh/',{withCredentials: true,});
     } catch (err) {
       handleAuthError();
     }
