@@ -9,6 +9,7 @@ import { MoreDropdown } from "../../components/MoreDropdown";
 import Card from "react-bootstrap/Card"
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+
 const Post = (props) => {
   const {
     id,
@@ -26,6 +27,9 @@ const Post = (props) => {
     setPosts,
   } = props;
 
+  
+
+
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
   const history = useNavigate();
@@ -36,16 +40,20 @@ const Post = (props) => {
 
   const handleDelete = async () => {
     try {
-      await axiosRes.delete(`/posts/${id}/`);
+      await axiosRes.delete(`/posts/${id}/`,{headers:{
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+      }});
       history('/');
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
   const handleLike = async () => {
     try {
-      const { data } = await axiosRes.post("/likes/", { post: id });
+      const { data } = await axiosRes.post("/likes/", { post: id },{headers:{
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+      }});
       setPosts((prevPosts) => ({
         ...prevPosts,
         results: prevPosts.results.map((post) => {
@@ -55,7 +63,7 @@ const Post = (props) => {
         }),
       }));
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
@@ -71,10 +79,10 @@ const Post = (props) => {
         }),
       }));
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
-  console.log(postPage)
+
 
   return (
     <Card className={styles.Post}>

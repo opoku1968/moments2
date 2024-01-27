@@ -30,7 +30,7 @@ const PopularProfiles = ({mobile}) => {
                 // console.log(profile.id)
             }
             catch(err){
-                console.log(TypeError);
+                // console.log(TypeError);
 
             }
         }
@@ -38,8 +38,8 @@ const PopularProfiles = ({mobile}) => {
     },[currentUser])
  
 
-  return (
-    <Container className={`${appstyles.Content} ${mobile && 'd-lg-none text-center mb-3'}`}>
+    return (
+        <Container className={`${appstyles.Content} ${mobile && 'd-lg-none text-center mb-3'}`}>
         {PopularProfiles.results.length ? (
             <>
         <p>Most followed profiles.</p>
@@ -64,7 +64,8 @@ const PopularProfiles = ({mobile}) => {
             <Asset spinner/>
         )}
     </Container >
-  );
+    );
+    
 }
 
 export default PopularProfiles;

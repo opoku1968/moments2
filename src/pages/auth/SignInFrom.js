@@ -36,6 +36,7 @@ function SignInForm() {
       const {data} = await axios.post("/dj-rest-auth/login/", signInData,{withCredentials: false,});
     
       const authToken =data.access_token;
+      // console.log(authToken)
 
       // Store the authentication token in local storage
       localStorage.setItem('authToken', authToken);

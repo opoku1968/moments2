@@ -36,8 +36,12 @@ function ProfilePage() {
     const fetchData = async()=>{
         try {
             const [{data: pageProfile} , {data:profilePosts}] = await Promise.all([
-                axiosReq.get(`/profiles/${id}/`),
-                axiosReq.get(`/posts/?owner__profile=${id}`),
+                axiosReq.get(`/profiles/${id}/`,{headers:{
+                  'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+                }}),
+                axiosReq.get(`/posts/?owner__profile=${id}`,{headers:{
+                  'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+                }}),
             ])
             setProfileData(prevState =>({
                 ...prevState,
@@ -46,8 +50,9 @@ function ProfilePage() {
             setProfilePosts(profilePosts);
             setHasLoaded(true)
         }catch(err){
-            console.log(err)
+            // console.log(err)
         }
+        console.log(profile?.followers_count)
     }
       fetchData()
   }, [id,setProfileData])

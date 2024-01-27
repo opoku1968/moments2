@@ -15,8 +15,11 @@ export const ProfileDataProvider = ({ children }) => {
     const [profileData, setProfileData] = useState({
         // we will use the pageProfile later
         pageProfile: { results: [] },
+        
         popularProfiles: { results: [] },
       });
+
+      
      
       const currentUser = useCurrentUser();
 
@@ -24,19 +27,22 @@ const handleFollow = async (clickedProfile) => {
         try {
 const {data} = await axiosRes.post('/followers/',{
     followed: clickedProfile.id
-})
+},{headers:{
+  'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+}})
 setProfileData(prevState =>({
     ...prevState,
     pageProfile:{
         results:prevState.pageProfile.results.map(profile => followHelper(profile,clickedProfile,data.id))
     },
+    
     popularProfiles:{
         ...prevState.popularProfiles,
         results: prevState.popularProfiles.results.map(profile =>followHelper(profile,clickedProfile,data.id))
     }
 }))
         }catch(err) {
-            console.log(err)
+            // console.log(err)
 
         }
        }
@@ -61,7 +67,7 @@ setProfileData(prevState =>({
             },
           }));
         } catch (err) {
-          console.log(err);
+          // console.log(err);
         }
       };
     
@@ -70,14 +76,16 @@ setProfileData(prevState =>({
         const handleMount = async () => {
           try {
             const { data } = await axiosReq.get(
-              "/profiles/?ordering=-followers_count"
+              "/profiles/?ordering=-followers_count",{headers:{
+                'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+              }}
             );
             setProfileData((prevState) => ({
               ...prevState,
               popularProfiles: data,
             }));
           } catch (err) {
-            console.log(err);
+            // console.log(err);
           }
         };
         handleMount();

@@ -15,9 +15,13 @@ const Comment = (props) => {
     const [showEditForm,setShowEditForm] = useState(false);
     const currentUser = useCurrentUser()
     const is_owner = currentUser?.username === owner;
+
     const handleDelete = async () => {
+      
         try {
-            await axiosRes.delete(`/comments/${id}/`)
+            await axiosRes.delete(`/comments/${id}/`,{headers:{
+              'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+            }})
             setPost(prevPost => ({
                 results: [{
                     ...prevPost.results[0],
@@ -54,7 +58,9 @@ const Comment = (props) => {
               />
               ) : (
                 <p>{content}</p>
+               
               )}
+              
             </CardBody>
             {is_owner && !showEditForm && (
               <MoreDropdown

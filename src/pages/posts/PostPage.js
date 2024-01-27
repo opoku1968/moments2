@@ -22,7 +22,9 @@ function PostPage() {
 
  useEffect(() => {
     const handleMount = async ()=>{
+      
         try {
+          
             const [{data: post}, {data: comments}] = await Promise.all([
                 axiosReq.get(`/posts/${id}`),
                 axiosReq.get(`/comments/?post=${id}`)
@@ -30,14 +32,16 @@ function PostPage() {
             ])
             setPost({results: [post]})
             setComments(comments)
+            
         }
         catch(err){
-            console.log(err)
+            // console.log(err)
         }
     }
+    // console.log("these are the comments:",comments)
     handleMount()
  },[id])
-
+// console.log(post.results[0])
 
   return (
     <Row className="h-100">
@@ -66,6 +70,7 @@ function PostPage() {
                 />
               ))}
               dataLength={comments.results.length}
+              
               loader={<Asset spinner />}
               hasMore={!!comments.next}
               next={() => fetchMoreData(comments, setComments)}

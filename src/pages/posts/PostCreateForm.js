@@ -19,7 +19,7 @@ import {axiosReq, axiosRes} from "../../api/axiosDefaults"
 import { useRedirect } from "../../hooks/useRedirect";
 
 function PostCreateForm() {
-  useRedirect('loggedOut')
+  // useRedirect('loggedOut')
   const [errors, setErrors] = useState({});
 
   const [postData, setPostData] = useState({
@@ -63,10 +63,13 @@ function PostCreateForm() {
     formData.append("image",imageInput.current.files[0])
 
     try {
+      // console.log(formData)
+    
         const {data} = await axiosReq.post('/posts/',formData);
+        console.log(data)
         history(`/posts/${data.id}`)
     }catch(err){
-        console.log(err)
+        // console.log(err)
         if (err.response?.status !== 401){
             setErrors(err.response?.data)
         }

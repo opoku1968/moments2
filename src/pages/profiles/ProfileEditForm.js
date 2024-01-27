@@ -42,7 +42,7 @@ const ProfileEditForm = () => {
           const { name, content, image } = data;
           setProfileData({ name, content, image });
         } catch (err) {
-          console.log(err);
+          // console.log(err);
           history("/");
         }
       } else {
@@ -76,9 +76,9 @@ const ProfileEditForm = () => {
         ...currentUser,
         profile_image: data.image,
       }));
-      history.goBack();
+      history('/');
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       setErrors(err.response?.data);
     }
   };
@@ -137,7 +137,8 @@ const ProfileEditForm = () => {
                   Change the image
                 </Form.Label>
               </div>
-              <Form.File
+              <Form.Control
+              type="file"
                 id="image-upload"
                 ref={imageFile}
                 accept="image/*"

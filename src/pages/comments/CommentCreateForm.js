@@ -22,22 +22,28 @@ function CommentCreateForm(props) {
       const { data } = await axiosRes.post("/comments/", {
         content,
         post,
-      });
+      },{
+       headers:{
+          'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+        }});
       setComments((prevComments) => ({
         ...prevComments,
         results: [data, ...prevComments.results],
       }));
-      setPost((prevPost) => ({
-        results: [
-          {
-            ...prevPost.results[0],
-            comments_count: prevPost.results[0].comments_count + 1,
-          },
-        ],
-      }));
+
+      // setPost((prevPost) => ({
+      //   results: [
+      //     {
+      //       ...prevPost.results[0],
+      //       // comments_count: prevPost.results[0].comments_count + 1,
+            
+      //     },
+          
+      //   ],
+      // },console.log(prevPost)));
       setContent("");
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
 
