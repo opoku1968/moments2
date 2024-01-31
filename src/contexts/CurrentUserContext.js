@@ -16,7 +16,9 @@ export const CurrentUserProvider = ({ children }) => {
 
   const handleMount = async () => {
     try {
-      const { data } = await axiosRes.get('dj-rest-auth/user/');
+      const { data } = await axiosRes.get('dj-rest-auth/user/',{headers:{
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+      }});
       setCurrentUser(data);
     } catch (err) {
       // console.log(err);
@@ -32,7 +34,9 @@ export const CurrentUserProvider = ({ children }) => {
 
     
     try {
-      await axios.post('/dj-rest-auth/token/refresh/',{withCredentials: false,});
+      await axios.post('/dj-rest-auth/token/refresh/',{withCredentials: false,},{headers:{
+        'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+      }});
     } catch (err) {
       handleAuthError();
     }
