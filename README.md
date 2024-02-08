@@ -9,7 +9,7 @@ ___
 This is a web Application that is able to allow individuals to be able to share, like and comment on posts of other users and theirs. it is just like any social media platfrom like instagram or twitter with a few select features
 
 
-Link to live site - [https://new-reddit-b6200d755aad.herokuapp.com/](https://new-reddit-b6200d755aad.herokuapp.com/)
+Link to live site - [https://moments-frontend-21e28627c0cd.herokuapp.com/](https://moments-frontend-21e28627c0cd.herokuapp.com/)
 
 ## CONTENTS
 
