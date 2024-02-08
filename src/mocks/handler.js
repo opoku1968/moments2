@@ -1,4 +1,4 @@
-// const baseURL =  "https://drf-api-rec.herokuapp.com"
+
 const baseURL = "https://backend-moments-053582d75bda.herokuapp.com/"
 
 export const handlers = [

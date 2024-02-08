@@ -24,7 +24,7 @@ const PopularProfiles = ({mobile}) => {
                     PopularProfiles:data,
                     
                 }))
-                console.log(PopularProfiles.results)
+                // console.log(PopularProfiles.results)
                 
               
                 // console.log(profile.id)

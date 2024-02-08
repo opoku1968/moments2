@@ -52,7 +52,7 @@ function ProfilePage() {
         }catch(err){
             // console.log(err)
         }
-        console.log(profile?.followers_count)
+        // console.log(profile?.followers_count)
     }
       fetchData()
   }, [id,setProfileData])
